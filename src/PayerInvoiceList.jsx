@@ -87,7 +87,7 @@ const allData = [
   },
 ];
 
-function InvoiceList() {
+function PayerInvoiceList() {
   const [data, setData] = useState(allData);
   const [selectedStatus, setSelectedStatus] = useState("all");
   // const [showCheckboxes, setShowCheckboxes] = useState(false);
@@ -117,7 +117,7 @@ function InvoiceList() {
   return (
     <div>
       {" "}
-      <h1 style={{ textAlign: "center", color: "#FFFFFF" }}>
+      <h1 style={{ textAlign: "center", color: "black" }}>
         My Invoices(Payer)
       </h1>
       <div
@@ -199,4 +199,4 @@ function InvoiceList() {
   );
 }
 
-export default InvoiceList;
+export default PayerInvoiceList;

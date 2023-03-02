@@ -8,7 +8,7 @@ function InvoiceForm() {
     setOptionsVisible(!optionsVisible);
   };
 
-  const selectOption = option => {
+  const selectOption = (option) => {
     setSelectedOption(option);
     setOptionsVisible(false);
   };
@@ -62,19 +62,32 @@ function InvoiceForm() {
                   onClick={toggleOptions}
                 />
                 <div className="position-absolute" style={{ top: 0, right: 4 }}>
-                  <button type="button" className="btn btn-light" onClick={toggleOptions}>
+                  <button
+                    type="button"
+                    className="btn btn-light"
+                    onClick={toggleOptions}
+                  >
                     &#x25BC;
                   </button>
                 </div>
                 {optionsVisible && (
                   <div className="position-absolute mt-2 bg-dark p-2">
-                    <div className="text-light" onClick={() => selectOption("ETH")}>
+                    <div
+                      className="text-light"
+                      onClick={() => selectOption("ETH")}
+                    >
                       ETH
                     </div>
-                    <div className="text-light" onClick={() => selectOption("Arb")}>
+                    <div
+                      className="text-light"
+                      onClick={() => selectOption("Arb")}
+                    >
                       Arb
                     </div>
-                    <div className="text-light" onClick={() => selectOption("Poly")}>
+                    <div
+                      className="text-light"
+                      onClick={() => selectOption("Poly")}
+                    >
                       Poly
                     </div>
                   </div>

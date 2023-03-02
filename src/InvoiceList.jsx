@@ -114,7 +114,7 @@ function InvoiceList() {
   return (
     <div>
       {" "}
-      <h1 style={{ textAlign: "center", color: "#FFFFFF" }}>My Invoices</h1>
+      <h1 style={{ textAlign: "center", color: "black" }}>My Invoices</h1>
       <div
         style={{
           margin: "10vh 5% 5% 5%",
@@ -132,15 +132,15 @@ function InvoiceList() {
         >
           <button
             onClick={() => filterData("paid")}
-            className={`btn btn-success me-2 ${
-              selectedStatus === "paid" ? "active" : ""
-            }`}
+            style={{ backgroundColor: "#4E4FE9", color: "white" }}
+            className={`btn  me-2 ${selectedStatus === "paid" ? "active" : ""}`}
           >
             Paid
           </button>
           <button
             onClick={() => filterData("unpaid")}
-            className={`btn btn-success me-2 ${
+            style={{ backgroundColor: "#4E4FE9", color: "white" }}
+            className={`btn  me-2 ${
               selectedStatus === "unpaid" ? "active" : ""
             }`}
           >
@@ -148,7 +148,8 @@ function InvoiceList() {
           </button>
           <button
             onClick={() => filterData("outstanding")}
-            className={`btn btn-success me-2 ${
+            style={{ backgroundColor: "#4E4FE9", color: "white" }}
+            className={`btn me-2 ${
               selectedStatus === "outstanding" ? "active" : ""
             }`}
           >
@@ -156,6 +157,7 @@ function InvoiceList() {
           </button>
           <button
             onClick={() => filterData("all")}
+            style={{ backgroundColor: "#4E4FE9", color: "white" }}
             className={`btn btn-success ${
               selectedStatus === "all" ? "active" : ""
             }`}
@@ -163,16 +165,17 @@ function InvoiceList() {
             All
           </button>
         </div>
-        <div style={{ border: "3px solid #12E26C", borderRadius: "20px" }}>
+        <div style={{ border: "3px solid #000080", borderRadius: "20px" }}>
           <DataTable columns={columns} data={data} />
         </div>
 
         <Link to="/invoiceForm" style={{ textDecoration: "none" }}>
           <button
             type="button"
-            className="btn btn-success"
+            className="btn"
             style={{
               position: "absolute",
+              backgroundColor: "#000080",
               top: "25px",
               right: "20px",
               color: "white",
