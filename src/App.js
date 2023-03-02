@@ -5,6 +5,7 @@ import MyInvoices from "./InvoiceList";
 import CreateInvoice from "./invoiceForm";
 import InvoiceList from "./PayerInvoiceList";
 import Header from "./components/Header";
+import ViewInvoice from "./ViewInvoice";
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
         <Route exact path="/myInvoices" element={<MyInvoices />} />
         <Route exact path="/createInvoice" element={<CreateInvoice />} />
         <Route exact path="/payerList" element={<InvoiceList />} />
+        <Route exact path="/ViewInvoice" element={<ViewInvoice />} />
       </Routes>
     </div>
   );
