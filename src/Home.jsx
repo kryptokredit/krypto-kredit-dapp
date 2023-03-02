@@ -30,8 +30,7 @@ function Home() {
         <img
           style={{ maxWidth: "80%" }}
           src="./undraw_sharing_knowledge_03vp.svg"
-          alt="Hero Image"
-          className="img-fluid"
+
         />
       </div>
     </div>
