@@ -1,9 +1,13 @@
-const { GraphQLClient } = require('graphql-request');
+const { ApolloClient, InMemoryCache, gql } = require('@apollo/client');
 
-const endpoint = 'https://api.thegraph.com/subgraphs/name/luiscmogrovejo/factory-graph';
-const query = `
-  query ($invoicer: String!) {
-    invoiceCreateds(where: {invoicer: $invoicer}) {
+const client = new ApolloClient({
+  uri: 'https://api.studio.thegraph.com/query/<ID>/<SUBGRAPH_NAME>',
+  cache: new InMemoryCache(),
+});
+
+const GET_INVOICES = gql`
+  query GetInvoices($invoicer: String!) {
+    invoiceCreateds(where: { invoicer: $invoicer }) {
       id
       idInvoice
       invoicer
@@ -18,9 +22,20 @@ const query = `
 `;
 
 async function fetchInvoicesByInvoicer(invoicer) {
-  const client = new GraphQLClient(endpoint);
-  const variables = { invoicer };
-  const data = await client.request(query, variables);
+  const { loading, error, data } = await client.query({
+    query: GET_INVOICES,
+    variables: { invoicer },
+  });
+
+  if (loading) {
+    console.log('Loading...');
+  }
+
+  if (error) {
+    console.error(error);
+    return [];
+  }
+
   return data.invoiceCreateds;
 }
 
