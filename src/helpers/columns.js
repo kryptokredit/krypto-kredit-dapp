@@ -1,14 +1,20 @@
 export const allColumns = [
   {
-    name: "Name",
+    name: <span style={{ fontWeight: "bold" }}>Name</span>,
     selector: "Name",
   },
-  { name: "Amount", selector: "Amount" },
-  { name: "Due Date", selector: "DueDate" },
   {
-    name: "Status",
+    name: <span style={{ fontWeight: "bold" }}>Amount</span>,
+    selector: "Amount",
+  },
+  {
+    name: <span style={{ fontWeight: "bold" }}>Due Date</span>,
+    selector: "DueDate",
+  },
+  {
+    name: <span style={{ fontWeight: "bold" }}>Status</span>,
     selector: "status",
-    cell: row => (
+    cell: (row) => (
       <button
         className="btn"
         disabled
@@ -16,7 +22,12 @@ export const allColumns = [
           width: "120px",
           height: "auto",
           alignItems: "center",
-          backgroundColor: row.status === "unpaid" ? "yellow" : row.status === "outstanding" ? "red" : "green",
+          backgroundColor:
+            row.status === "unpaid"
+              ? "yellow"
+              : row.status === "outstanding"
+              ? "red"
+              : "green",
         }}
       >
         {row.status}
@@ -24,9 +35,9 @@ export const allColumns = [
     ),
   },
   {
-    name: "View invoice",
+    name: <span style={{ fontWeight: "bold" }}>View invoice</span>,
     selector: "view",
-    cell: row => (
+    cell: (row) => (
       <button
         className="btn btn-primary"
         onClick={() => console.log(`Sell ${row.id}`)}
@@ -39,23 +50,35 @@ export const allColumns = [
 ];
 
 export const unpaidColumns = [
-  { name: "Name", selector: "Name" },
-  { name: "Amount", selector: "Amount" },
-  { name: "Due Date", selector: "DueDate" },
+  { name: <span style={{ fontWeight: "bold" }}>Name</span>, selector: "Name" },
+  {
+    name: <span style={{ fontWeight: "bold" }}>Amount</span>,
+    selector: "Amount",
+  },
+  {
+    name: <span style={{ fontWeight: "bold" }}>Due Date</span>,
+    selector: "DueDate",
+  },
 
   {
-    name: "Sell",
+    name: <span style={{ fontWeight: "bold" }}>Sell</span>,
     selector: "Sell",
-    cell: row => (
-      <button className="btn btn-success btn-sm" onClick={() => console.log(`Sell ${row.id}`)}>
+    cell: (row) => (
+      <button
+        className="btn btn-success btn-sm"
+        onClick={() => console.log(`Sell ${row.id}`)}
+      >
         Sell
       </button>
     ),
   },
   {
-    name: "Borrow",
-    cell: row => (
-      <button className="btn btn-primary btn-sm" onClick={() => console.log(`Borrow ${row.id}`)}>
+    name: <span style={{ fontWeight: "bold" }}>Borrow</span>,
+    cell: (row) => (
+      <button
+        className="btn btn-primary btn-sm"
+        onClick={() => console.log(`Borrow ${row.id}`)}
+      >
         Borrow
       </button>
     ),
@@ -63,13 +86,35 @@ export const unpaidColumns = [
 ];
 
 export const paidColumns = [
-  { name: "Name", selector: "Name" },
-  { name: "Amount", selector: "Amount" },
-  { name: "Due Date", selector: "DueDate" },
+  { name: <span style={{ fontWeight: "bold" }}>Name</span>, selector: "Name" },
+  {
+    name: <span style={{ fontWeight: "bold" }}>Amount</span>,
+    selector: "Amount",
+  },
+  {
+    name: <span style={{ fontWeight: "bold" }}>Due Date</span>,
+    selector: "DueDate",
+  },
 ];
 
 export const outstandingColumns = [
-  { name: "Name", selector: "Name" },
-  { name: "Amount", selector: "Amount" },
-  { name: "Due Date", selector: "DueDate" },
+  { name: <span style={{ fontWeight: "bold" }}>Name</span>, selector: "Name" },
+  {
+    name: <span style={{ fontWeight: "bold" }}>Amount</span>,
+    selector: "Amount",
+  },
+  {
+    name: <span style={{ fontWeight: "bold" }}>Due Date</span>,
+    selector: "DueDate",
+  },
 ];
+
+const SubHeaderComponent = () => (
+  <div className="sub-header" style={{ borderBottom: "3px solid #000080" }}>
+    <div>Name</div>
+    <div>Amount</div>
+    <div>Due Date</div>
+    <div>Status</div>
+    <div>View invoice</div>
+  </div>
+);
