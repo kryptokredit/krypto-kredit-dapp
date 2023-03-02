@@ -3,14 +3,39 @@ import React, { useState } from "react";
 function InvoiceForm() {
   const [optionsVisible, setOptionsVisible] = useState(false);
   const [selectedOption, setSelectedOption] = useState("ETH");
+  const [name, setName] = useState("");
+  const [dueDate, setDueDate] = useState("");
+  const [payerWalletAddress, setPayerWalletAddress] = useState("");
+  const [description, setDescription] = useState("");
 
   const toggleOptions = () => {
     setOptionsVisible(!optionsVisible);
   };
 
-  const selectOption = option => {
+  const selectOption = (option) => {
     setSelectedOption(option);
     setOptionsVisible(false);
+    console.log(`Selected option: ${option}`);
+  };
+
+  const handleNameChange = (event) => {
+    setName(event.target.value);
+    console.log("Name:", event.target.value);
+  };
+
+  const handleDueDateChange = (event) => {
+    setDueDate(event.target.value);
+    console.log("DueDate", event.target.value);
+  };
+
+  const handlePayerWalletAddressChange = (event) => {
+    setPayerWalletAddress(event.target.value);
+    console.log("WalletAddress:", event.target.value);
+  };
+
+  const handleDescriptionChange = (event) => {
+    setDescription(event.target.value);
+    console.log("Description:", event.target.value);
   };
 
   return (
@@ -34,7 +59,13 @@ function InvoiceForm() {
               <label htmlFor="input1" className="text-light">
                 Name
               </label>
-              <input type="text" className="form-control" id="input1" />
+              <input
+                value={name}
+                onChange={handleNameChange}
+                type="text"
+                className="form-control"
+                id="input1"
+              />
             </div>
           </div>
           <div className="col-lg-6">
@@ -42,7 +73,13 @@ function InvoiceForm() {
               <label htmlFor="input2" className="text-light">
                 Due Date
               </label>
-              <input type="text" className="form-control" id="input2" />
+              <input
+                type="text"
+                className="form-control"
+                id="input2"
+                value={dueDate}
+                onChange={handleDueDateChange}
+              />
             </div>
           </div>
         </div>
@@ -62,19 +99,32 @@ function InvoiceForm() {
                   onClick={toggleOptions}
                 />
                 <div className="position-absolute" style={{ top: 0, right: 4 }}>
-                  <button type="button" className="btn btn-light" onClick={toggleOptions}>
+                  <button
+                    type="button"
+                    className="btn btn-light"
+                    onClick={toggleOptions}
+                  >
                     &#x25BC;
                   </button>
                 </div>
                 {optionsVisible && (
                   <div className="position-absolute mt-2 bg-dark p-2">
-                    <div className="text-light" onClick={() => selectOption("ETH")}>
+                    <div
+                      className="text-light"
+                      onClick={() => selectOption("ETH")}
+                    >
                       ETH
                     </div>
-                    <div className="text-light" onClick={() => selectOption("Arb")}>
+                    <div
+                      className="text-light"
+                      onClick={() => selectOption("Arb")}
+                    >
                       Arb
                     </div>
-                    <div className="text-light" onClick={() => selectOption("Poly")}>
+                    <div
+                      className="text-light"
+                      onClick={() => selectOption("Poly")}
+                    >
                       Poly
                     </div>
                   </div>
@@ -87,7 +137,13 @@ function InvoiceForm() {
               <label htmlFor="input4" className="text-light">
                 Enter Wallet address of payer
               </label>
-              <input type="text" className="form-control" id="input4" />
+              <input
+                type="text"
+                className="form-control"
+                id="input4"
+                value={payerWalletAddress}
+                onChange={handlePayerWalletAddressChange}
+              />
             </div>
           </div>
         </div>
@@ -98,7 +154,12 @@ function InvoiceForm() {
               <label htmlFor="input5" className="text-light">
                 Description of Service
               </label>
-              <textarea className="form-control" id="input5"></textarea>
+              <textarea
+                className="form-control"
+                id="input5"
+                value={description}
+                onChange={handleDescriptionChange}
+              ></textarea>
             </div>
           </div>
         </div>

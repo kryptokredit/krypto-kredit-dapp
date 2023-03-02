@@ -16,8 +16,10 @@ function Header() {
           <Dropdown as={Nav.Item}>
             <Dropdown.Toggle as={Nav.Link}>Invoicer</Dropdown.Toggle>
             <Dropdown.Menu>
-              <Dropdown.Item href="/InvoiceForm">My Invoices</Dropdown.Item>
-              <Dropdown.Item href="#">Create an Invoice</Dropdown.Item>
+              <Dropdown.Item href="/InvoiceList">My Invoices</Dropdown.Item>
+              <Dropdown.Item href="/InvoiceForm">
+                Create an Invoice
+              </Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
           <Dropdown as={Nav.Item}>
