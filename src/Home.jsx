@@ -12,7 +12,7 @@ function Home() {
           }}
           className="display-5 fw-bold lh-1 mb-3 text-left"
         >
-          Unlock Your Financial Potential with Our Blockchain Invoices
+          Join the future of finance, earn credit on chain for your everyday transactions
         </h1>
         <p style={{ color: "white" }} className="lead mb-4 text-left">
           Redefining Credit: A Peer-to-Peer Approach
