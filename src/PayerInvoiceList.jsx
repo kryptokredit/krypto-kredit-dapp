@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 import DataTable from "react-data-table-component";
 import { Link } from "react-router-dom";
-import { allColumns, outstandingColumns, paidColumns, unpaidColumns } from "./helpers/columns";
+import {
+  allColumns,
+  outstandingColumns,
+  paidColumns,
+  unpaidColumns,
+} from "./helpers/columns";
 
 // const conditionalRowStyles = [
 //   {
@@ -31,43 +36,80 @@ const customTheme = {
 };
 
 const allData = [
-  { id: 1, Name: "Maya", Amount: "2 ETH", DueDate: "2/30/2025", status: "unpaid" },
-  { id: 2, Name: "Miguel", Amount: "2 ETH", DueDate: "2/30/2025", status: "paid" },
-  { id: 3, Name: "Miguel", Amount: "2 ETH", DueDate: "2/30/2025", status: "unpaid" },
-  { id: 4, Name: "Miguel", Amount: "2 ETH", DueDate: "2/30/2025", status: "outstanding" },
-  { id: 5, Name: "Miguel", Amount: "2 ETH", DueDate: "2/30/2025", status: "paid" },
-  { id: 6, Name: "Miguel", Amount: "2 ETH", DueDate: "2/30/2025", status: "outstanding" },
-  { id: 7, Name: "Miguel", Amount: "2 ETH", DueDate: "2/30/2025", status: "unpaid" },
+  {
+    id: 1,
+    Name: "Maya",
+    Amount: "2 ETH",
+    DueDate: "2/30/2025",
+    status: "unpaid",
+  },
+  {
+    id: 2,
+    Name: "Miguel",
+    Amount: "2 ETH",
+    DueDate: "2/30/2025",
+    status: "paid",
+  },
+  {
+    id: 3,
+    Name: "Miguel",
+    Amount: "2 ETH",
+    DueDate: "2/30/2025",
+    status: "unpaid",
+  },
+  {
+    id: 4,
+    Name: "Miguel",
+    Amount: "2 ETH",
+    DueDate: "2/30/2025",
+    status: "outstanding",
+  },
+  {
+    id: 5,
+    Name: "Miguel",
+    Amount: "2 ETH",
+    DueDate: "2/30/2025",
+    status: "paid",
+  },
+  {
+    id: 6,
+    Name: "Miguel",
+    Amount: "2 ETH",
+    DueDate: "2/30/2025",
+    status: "outstanding",
+  },
+  {
+    id: 7,
+    Name: "Miguel",
+    Amount: "2 ETH",
+    DueDate: "2/30/2025",
+    status: "unpaid",
+  },
 ];
 
 function InvoiceList() {
   const [data, setData] = useState(allData);
   const [selectedStatus, setSelectedStatus] = useState("all");
   // const [showCheckboxes, setShowCheckboxes] = useState(false);
-  const [showButtons, setShowButtons] = useState(false);
+
   const [columns, setColumns] = useState(allColumns);
 
-  const filterData = status => {
+  const filterData = (status) => {
     if (status === "all") {
       setData(allData);
       setColumns(allColumns);
-
-      setShowButtons(false);
     } else if (status === "unpaid") {
-      setData(allData.filter(item => item.status === status));
+      setData(allData.filter((item) => item.status === status));
 
       setColumns(unpaidColumns);
-      setShowButtons(true);
     } else if (status === "paid") {
-      setData(allData.filter(item => item.status === status));
+      setData(allData.filter((item) => item.status === status));
 
       setColumns(paidColumns);
-      setShowButtons(false);
     } else if (status === "outstanding") {
-      setData(allData.filter(item => item.status === status));
+      setData(allData.filter((item) => item.status === status));
 
       setColumns(outstandingColumns);
-      setShowButtons(false);
     }
     setSelectedStatus(status);
   };
@@ -75,30 +117,53 @@ function InvoiceList() {
   return (
     <div>
       {" "}
-      <h1 style={{ textAlign: "center", color: "#FFFFFF" }}>My Invoices(Payer)</h1>
-      <div style={{ margin: "10vh 5% 5% 5%", padding: "20px", borderRadius: "10px 10px 0 0", position: "relative" }}>
-        <div style={{ display: "flex", justifyContent: "flex-start", marginBottom: "20px" }}>
+      <h1 style={{ textAlign: "center", color: "#FFFFFF" }}>
+        My Invoices(Payer)
+      </h1>
+      <div
+        style={{
+          margin: "10vh 5% 5% 5%",
+          padding: "20px",
+          borderRadius: "10px 10px 0 0",
+          position: "relative",
+        }}
+      >
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "flex-start",
+            marginBottom: "20px",
+          }}
+        >
           <button
             onClick={() => filterData("paid")}
-            className={`btn btn-success me-2 ${selectedStatus === "paid" ? "active" : ""}`}
+            className={`btn btn-success me-2 ${
+              selectedStatus === "paid" ? "active" : ""
+            }`}
           >
             Paid
           </button>
           <button
             onClick={() => filterData("unpaid")}
-            className={`btn btn-success me-2 ${selectedStatus === "unpaid" ? "active" : ""}`}
+            className={`btn btn-success me-2 ${
+              selectedStatus === "unpaid" ? "active" : ""
+            }`}
           >
             Unpaid
           </button>
           <button
             onClick={() => filterData("outstanding")}
-            className={`btn btn-success me-2 ${selectedStatus === "outstanding" ? "active" : ""}`}
+            className={`btn btn-success me-2 ${
+              selectedStatus === "outstanding" ? "active" : ""
+            }`}
           >
             Outstanding
           </button>
           <button
             onClick={() => filterData("all")}
-            className={`btn btn-success ${selectedStatus === "all" ? "active" : ""}`}
+            className={`btn btn-success ${
+              selectedStatus === "all" ? "active" : ""
+            }`}
           >
             All
           </button>
