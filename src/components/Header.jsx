@@ -11,7 +11,7 @@ function Header() {
         />
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
-      <Navbar.Collapse id="basic-navbar-nav">
+      <Navbar.Collapse id="basic-navbar-nav " className="justify-content-end">
         <Nav className="mr-auto">
           <Dropdown as={Nav.Item}>
             <Dropdown.Toggle as={Nav.Link}>Invoicer</Dropdown.Toggle>
