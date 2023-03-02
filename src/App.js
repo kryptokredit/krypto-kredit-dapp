@@ -16,7 +16,6 @@ const App = () => {
         <Route exact path="/InvoiceList" element={<InvoiceList />} />
         <Route exact path="/InvoiceForm" element={<InvoiceForm />} />
         <Route exact path="/payerInvoiceList" element={<PayerInvoiceList />} />
-        <Route exact path="/payerList" element={<InvoiceList />} />
       </Routes>
     </div>
   );
