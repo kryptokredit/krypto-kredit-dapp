@@ -102,7 +102,6 @@ function InvoiceList() {
       setData(allData.filter((item) => item.status === status));
 
       setColumns(unpaidColumns);
-      setShowButtons(true);
     } else if (status === "paid") {
       setData(allData.filter((item) => item.status === status));
 
