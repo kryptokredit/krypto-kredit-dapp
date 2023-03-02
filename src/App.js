@@ -1,13 +1,15 @@
 import React from "react";
-import { Routes, Route} from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Home from "./Home";
 import MyInvoices from "./InvoiceList";
 import CreateInvoice from "./invoiceForm";
-import InvoiceList from "./PayerInvoiceList"
+import InvoiceList from "./PayerInvoiceList";
+import Header from "./components/Header";
 
 const App = () => {
   return (
     <div>
+      <Header> </Header>
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route exact path="/myInvoices" element={<MyInvoices />} />
