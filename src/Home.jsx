@@ -40,6 +40,7 @@ function Home() {
       <div className="col-md-6">
         <img
           style={{ maxWidth: "80%" }}
+          alt="Hero title"
           src="./undraw_sharing_knowledge_03vp.svg"
         />
       </div>
