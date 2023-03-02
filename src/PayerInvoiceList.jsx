@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import DataTable from "react-data-table-component";
 import { Link } from "react-router-dom";
-import { allColumns, outstandingColumns, paidColumns, unpaidColumns } from "../helpers/columns";
+import { allColumns, outstandingColumns, paidColumns, unpaidColumns } from "./helpers/columns";
 
 // const conditionalRowStyles = [
 //   {
