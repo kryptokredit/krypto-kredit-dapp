@@ -175,7 +175,7 @@ function InvoiceList() {
             className="btn"
             style={{
               position: "absolute",
-              backgroundColor: "#000080",
+              backgroundColor: "#4E4FE9",
               top: "25px",
               right: "20px",
               color: "white",
