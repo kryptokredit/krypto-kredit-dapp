@@ -1,5 +1,6 @@
 {
   "name": "krypto-kredit-dapp",
+  "homepage": "https://friendly-selkie-2bb824.netlify.app",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
