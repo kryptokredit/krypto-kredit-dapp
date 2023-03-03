@@ -98,10 +98,9 @@ function Header() {
           <Nav.Item>
             <button
               style={{
-                fontSize: "12px" /* adjust the font size as needed */,
+                fontSize: "12px",
                 fontWeight: "bold",
-                color:
-                  "#fff" /* set the font color to contrast with the background color */,
+                color: "#fff",
                 backgroundColor: "#12E26C",
                 border: "none",
                 borderRadius: "4px",
@@ -111,6 +110,12 @@ function Header() {
               }}
               onClick={() => {
                 connect();
+              }}
+              onMouseOver={(e) => {
+                e.target.style.backgroundColor = "#0EAC5B";
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.backgroundColor = "#12E26C";
               }}
             >
               {account ? `${account}` : "Connect"}
