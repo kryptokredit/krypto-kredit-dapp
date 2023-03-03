@@ -6,14 +6,9 @@ function Header() {
   const {
     user,
     isAuthenticated,
-    primaryWallet,
-    handleLogOut,
-    connectedWallets,
     setShowAuthFlow,
-    showAuthFlow,
     walletConnector,
   } = useDynamicContext();
-  const [balance, setBalance] = React.useState(null);
   const [addressWallet, setAddressWallet] = React.useState("");
 
   async function handleWallet() {
@@ -22,13 +17,9 @@ function Header() {
 
   React.useEffect(() => {
     if (user && walletConnector) {
-      const provider = walletConnector.getWeb3Provider();
-      handleWallet();
-      provider.getBalance(user.walletPublicKey).then((balance) => {
-        setBalance(balance.toString());
-      });
+      handleWallet()
     }
-  }, [user, walletConnector]);
+  });
 
   return (
     <Navbar bg="light" expand="lg">
