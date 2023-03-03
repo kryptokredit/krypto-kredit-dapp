@@ -7,6 +7,9 @@ function InvoiceForm() {
   const [dueDate, setDueDate] = useState(new Date().toISOString().slice(0, 10));
   const [payerWalletAddress, setPayerWalletAddress] = useState("");
   const [description, setDescription] = useState("");
+  const [amount, setAmount] = useState();
+  const [lateFee, setLateFee] = useState();
+  const [validatorWalletAddress, setValidatorWalletAddress] = useState();
 
   const toggleOptions = () => {
     setOptionsVisible(!optionsVisible);
@@ -17,10 +20,14 @@ function InvoiceForm() {
     setOptionsVisible(false);
     console.log(`Selected option: ${option}`);
   };
+  const handleAmountChange = (event) => {
+    setAmount(event.target.value);
+    console.log("Amount:", event.target.value);
+  };
 
-  const handleNameChange = (event) => {
-    setName(event.target.value);
-    console.log("Name:", event.target.value);
+  const handleLateFeeChange = (event) => {
+    setLateFee(event.target.value);
+    console.log("Late Fee:", event.target.value);
   };
 
   const handleDueDateChange = (event) => {
@@ -30,6 +37,11 @@ function InvoiceForm() {
 
   const handlePayerWalletAddressChange = (event) => {
     setPayerWalletAddress(event.target.value);
+    console.log("WalletAddress:", event.target.value);
+  };
+
+  const handleValidatorWalletAddressChange = (event) => {
+    setValidatorWalletAddress(event.target.value);
     console.log("WalletAddress:", event.target.value);
   };
 
@@ -58,16 +70,18 @@ function InvoiceForm() {
           <div className="col-lg-6 mb-3 mb-lg-0">
             <div className="form-group my-3">
               <label htmlFor="input1" className="text-dark">
-                Name
+                Amount
               </label>
               <input
-                value={name}
-                onChange={handleNameChange}
-                type="text"
+                value={amount}
+                onChange={handleAmountChange}
+                type="number"
+                min="1"
+                step="any"
                 className="form-control"
                 id="input1"
                 style={{ border: "2px solid #555" }}
-                placeholder="Name"
+                placeholder="Enter Amount"
               />
             </div>
           </div>
@@ -159,6 +173,42 @@ function InvoiceForm() {
                 style={{ border: "2px solid #555" }}
                 placeholder="Wallet Address"
               />
+            </div>
+          </div>
+          <div className="row mb-3">
+            <div className="col-lg-6 mb-3 mb-lg-0">
+              <div className="form-group my-3">
+                <label htmlFor="input6" className="text-dark">
+                  Late Fee
+                </label>
+                <input
+                  value={lateFee}
+                  onChange={handleLateFeeChange}
+                  type="number"
+                  min="1"
+                  step="any"
+                  className="form-control"
+                  id="input6"
+                  style={{ border: "2px solid #555" }}
+                  placeholder=""
+                />
+              </div>
+            </div>
+            <div className="col-lg-6 mb-3 mb-lg-0">
+              <div className="form-group my-3">
+                <label htmlFor="input7" className="text-dark">
+                  Validator Wallet Address
+                </label>
+                <input
+                  value={validatorWalletAddress}
+                  onChange={handleValidatorWalletAddressChange}
+                  type="text"
+                  className="form-control"
+                  id="input1"
+                  style={{ border: "2px solid #555" }}
+                  placeholder="optional"
+                />
+              </div>
             </div>
           </div>
           <div></div>
