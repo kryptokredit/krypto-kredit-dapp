@@ -6,6 +6,8 @@ import PayerInvoiceList from "./PayerInvoiceList";
 import Header from "./components/Header";
 import { DynamicContextProvider } from "@dynamic-labs/sdk-react";
 import InvoiceForm from "./invoiceForm";
+import MyDashboard from "./MyDashboard";
+
 
 const App = () => {
   return (
@@ -29,6 +31,8 @@ const App = () => {
           <Route exact path="/" element={<Home />} />
           <Route exact path="/InvoiceForm" element={<InvoiceForm />} />
           <Route exact path="/InvoiceList" element={<InvoiceList />} />
+          <Route exact path="/InvoiceList" element={<InvoiceList />} />
+          <Route exact path="/MyDashboard" element={<MyDashboard />} />
           <Route
             exact
             path="/PayerInvoiceList"
