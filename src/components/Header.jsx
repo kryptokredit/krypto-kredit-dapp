@@ -1,25 +1,8 @@
 import { Navbar, Nav, Dropdown } from "react-bootstrap";
-import { useDynamicContext } from "@dynamic-labs/sdk-react";
 import React from "react";
 
 function Header() {
-  const {
-    user,
-    isAuthenticated,
-    setShowAuthFlow,
-    walletConnector,
-  } = useDynamicContext();
-  const [addressWallet, setAddressWallet] = React.useState("");
 
-  async function handleWallet() {
-    setAddressWallet(await walletConnector.fetchPublicAddress());
-  }
-
-  React.useEffect(() => {
-    if (user && walletConnector) {
-      handleWallet()
-    }
-  });
 
   return (
     <Navbar bg="light" expand="lg">
@@ -70,16 +53,10 @@ function Header() {
                 marginRight: "15px",
               }}
               onClick={() => {
-                console.log("isAuthenticated", isAuthenticated);
-                console.log("addressWallet", addressWallet);
-                setShowAuthFlow(true);
+
               }}
             >
-              {isAuthenticated
-                ? addressWallet.slice(0, 6) +
-                  "..." +
-                  addressWallet.slice(39, 42)
-                : "Connect"}
+   Connect
             </button>
           </Nav.Item>
         </Nav>
