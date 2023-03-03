@@ -4,26 +4,26 @@ import MetaMaskSDK from "@metamask/sdk";
 function Header() {
   const [sdk, setSdk] = React.useState(null);
 
-const [account, setAccount] = React.useState(null);
+  const [account, setAccount] = React.useState(null);
 
-async function connect() {
-  if (!sdk) {
-    const options = {
-      // add any desired options here
-    };
-    const newSdk = new MetaMaskSDK(options);
-    setSdk(newSdk);
-  }
+  async function connect() {
+    if (!sdk) {
+      const options = {
+        // add any desired options here
+      };
+      const newSdk = new MetaMaskSDK(options);
+      setSdk(newSdk);
+    }
 
-  try {
-    const accounts = await sdk.request({ method: "eth_requestAccounts" });
-    console.log("Connected with MetaMask!", accounts);
-    setAccount(accounts[0]);
-    // do any necessary state updates or API calls here
-  } catch (error) {
-    console.error("MetaMask connection error:", error);
+    try {
+      const accounts = await sdk.request({ method: "eth_requestAccounts" });
+      console.log("Connected with MetaMask!", accounts);
+      setAccount(accounts[0]);
+      // do any necessary state updates or API calls here
+    } catch (error) {
+      console.error("MetaMask connection error:", error);
+    }
   }
-}
 
   return (
     <Navbar bg="light" expand="lg">
@@ -38,7 +38,25 @@ async function connect() {
       <Navbar.Collapse id="basic-navbar-nav " className="justify-content-end">
         <Nav className="mr-auto">
           <Dropdown as={Nav.Item}>
-            <Dropdown.Toggle as={Nav.Link} style={{ marginRight: "15px" }}>
+            <Dropdown.Toggle
+              as={Nav.Link}
+              style={{
+                marginRight: "15px",
+                color: "#555",
+                transition: "all 0.3s ease-in-out",
+              }}
+              activeStyle={{
+                backgroundColor: "#eee",
+                color: "#12E26C",
+                fontWeight: "bold",
+              }}
+              onMouseEnter={(e) => {
+                e.target.style.color = "#12E26C";
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.color = "#555";
+              }}
+            >
               Invoicer
             </Dropdown.Toggle>
             <Dropdown.Menu>
@@ -49,7 +67,25 @@ async function connect() {
             </Dropdown.Menu>
           </Dropdown>
           <Dropdown as={Nav.Item}>
-            <Dropdown.Toggle as={Nav.Link} style={{ marginRight: "15px" }}>
+            <Dropdown.Toggle
+              as={Nav.Link}
+              style={{
+                marginRight: "15px",
+                color: "#555",
+                fontWeight: "bold",
+                transition: "all 0.3s ease-in-out",
+              }}
+              activeStyle={{
+                backgroundColor: "#eee",
+                color: "#12E26C",
+              }}
+              onMouseEnter={(e) => {
+                e.target.style.color = "#12E26C";
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.color = "#555";
+              }}
+            >
               Payer
             </Dropdown.Toggle>
             <Dropdown.Menu>

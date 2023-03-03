@@ -98,7 +98,7 @@ function InvoiceForm() {
                 Due Date
               </label>
               <input
-                style={{ border: "2px solid black", roundedBorder: "5px" }}
+                style={{ border: "2px solid black", borderRadius: "5px" }}
                 type="date"
                 id="input3"
                 name="trip-start"

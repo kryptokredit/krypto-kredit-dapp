@@ -90,6 +90,7 @@ function InvoiceList() {
   const [selectedStatus, setSelectedStatus] = useState("all");
   // const [showCheckboxes, setShowCheckboxes] = useState(false);
   const [columns, setColumns] = useState(allColumns);
+  const [isHovering, setIsHovering] = useState(false);
 
   const filterData = (status) => {
     if (status === "all") {
@@ -157,7 +158,10 @@ function InvoiceList() {
           </button>
           <button
             onClick={() => filterData("all")}
-            style={{ backgroundColor: "#4E4FE9", color: "white" }}
+            style={{
+              backgroundColor: "#4E4FE9",
+              color: "white",
+            }}
             className={`btn btn-success ${
               selectedStatus === "all" ? "active" : ""
             }`}
@@ -187,7 +191,10 @@ function InvoiceList() {
               boxShadow: "2px 2px 5px rgba(0,0,0,0.2)",
               outline: "none",
               cursor: "pointer",
+              opacity: isHovering ? 0.8 : 1,
             }}
+            onMouseEnter={() => setIsHovering(true)}
+            onMouseLeave={() => setIsHovering(false)}
           >
             + Create an Invoice
           </button>
