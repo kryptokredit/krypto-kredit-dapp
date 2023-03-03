@@ -1,14 +1,11 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Home from "./Home";
-import MyInvoices from "./InvoiceList";
-import CreateInvoice from "./invoiceForm";
-import InvoiceList from "./PayerInvoiceList";
+import InvoiceList from "./InvoiceList";
+import PayerInvoiceList from "./PayerInvoiceList";
 import Header from "./components/Header";
-import ViewInvoice from "./ViewInvoice";
-import {
-  DynamicContextProvider,
-} from "@dynamic-labs/sdk-react";
+import { DynamicContextProvider } from "@dynamic-labs/sdk-react";
+import InvoiceForm from "./invoiceForm";
 
 const App = () => {
   return (
@@ -30,10 +27,13 @@ const App = () => {
         <Header> </Header>
         <Routes>
           <Route exact path="/" element={<Home />} />
-          <Route exact path="/myInvoices" element={<MyInvoices />} />
-          <Route exact path="/createInvoice" element={<CreateInvoice />} />
-          <Route exact path="/payerList" element={<InvoiceList />} />
-          <Route exact path="/ViewInvoice" element={<ViewInvoice />} />
+          <Route exact path="/InvoiceForm" element={<InvoiceForm />} />
+          <Route exact path="/InvoiceList" element={<InvoiceList />} />
+          <Route
+            exact
+            path="/PayerInvoiceList"
+            element={<PayerInvoiceList />}
+          />
         </Routes>
       </DynamicContextProvider>
     </div>

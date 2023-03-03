@@ -108,13 +108,3 @@ export const outstandingColumns = [
     selector: "DueDate",
   },
 ];
-
-const SubHeaderComponent = () => (
-  <div className="sub-header" style={{ borderBottom: "3px solid #000080" }}>
-    <div>Name</div>
-    <div>Amount</div>
-    <div>Due Date</div>
-    <div>Status</div>
-    <div>View invoice</div>
-  </div>
-);

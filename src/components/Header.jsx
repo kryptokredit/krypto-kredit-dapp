@@ -1,17 +1,15 @@
 import { Navbar, Nav, Dropdown } from "react-bootstrap";
-import {
-  useDynamicContext,
-} from "@dynamic-labs/sdk-react";
+import { useDynamicContext } from "@dynamic-labs/sdk-react";
 import React from "react";
 
 function Header() {
-
   const {
     user,
     isAuthenticated,
     primaryWallet,
     handleLogOut,
-    connectedWallets,setShowAuthFlow,
+    connectedWallets,
+    setShowAuthFlow,
     showAuthFlow,
     walletConnector,
   } = useDynamicContext();
@@ -26,11 +24,9 @@ function Header() {
     if (user && walletConnector) {
       const provider = walletConnector.getWeb3Provider();
       handleWallet();
-      provider
-        .getBalance(user.walletPublicKey)
-        .then((balance) => {
-          setBalance(balance.toString());
-        });
+      provider.getBalance(user.walletPublicKey).then((balance) => {
+        setBalance(balance.toString());
+      });
     }
   }, [user, walletConnector]);
 
@@ -51,8 +47,10 @@ function Header() {
               Invoicer
             </Dropdown.Toggle>
             <Dropdown.Menu>
-              <Dropdown.Item href="/InvoiceForm">My Invoices</Dropdown.Item>
-              <Dropdown.Item href="#">Create an Invoice</Dropdown.Item>
+              <Dropdown.Item href="/InvoiceList">My Invoices</Dropdown.Item>
+              <Dropdown.Item href="/InvoiceForm">
+                Create an Invoice
+              </Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
           <Dropdown as={Nav.Item}>
@@ -87,7 +85,9 @@ function Header() {
               }}
             >
               {isAuthenticated
-                ? addressWallet.slice(0, 6) +"..." + addressWallet.slice(39, 42)
+                ? addressWallet.slice(0, 6) +
+                  "..." +
+                  addressWallet.slice(39, 42)
                 : "Connect"}
             </button>
           </Nav.Item>
