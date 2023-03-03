@@ -1,8 +1,29 @@
 import { Navbar, Nav, Dropdown } from "react-bootstrap";
 import React from "react";
-
+import MetaMaskSDK from "@metamask/sdk";
 function Header() {
+  const [sdk, setSdk] = React.useState(null);
 
+const [account, setAccount] = React.useState(null);
+
+async function connect() {
+  if (!sdk) {
+    const options = {
+      // add any desired options here
+    };
+    const newSdk = new MetaMaskSDK(options);
+    setSdk(newSdk);
+  }
+
+  try {
+    const accounts = await sdk.request({ method: "eth_requestAccounts" });
+    console.log("Connected with MetaMask!", accounts);
+    setAccount(accounts[0]);
+    // do any necessary state updates or API calls here
+  } catch (error) {
+    console.error("MetaMask connection error:", error);
+  }
+}
 
   return (
     <Navbar bg="light" expand="lg">
@@ -53,10 +74,10 @@ function Header() {
                 marginRight: "15px",
               }}
               onClick={() => {
-
+                connect();
               }}
             >
-   Connect
+              {account ? `${account}` : "Connect"}
             </button>
           </Nav.Item>
         </Nav>

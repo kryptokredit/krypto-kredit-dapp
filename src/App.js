@@ -9,7 +9,7 @@ import InvoiceForm from "./invoiceForm";
 const App = () => {
   return (
     <div>
-        <Header> </Header>
+        <Header/>
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route exact path="/InvoiceForm" element={<InvoiceForm />} />
