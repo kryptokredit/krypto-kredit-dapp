@@ -107,4 +107,16 @@ export const outstandingColumns = [
     name: <span style={{ fontWeight: "bold" }}>Due Date</span>,
     selector: "DueDate",
   },
+
+  {
+    name: <span style={{ fontWeight: "bold" }}>Send Soulbound</span>,
+    cell: (row) => (
+      <button
+        className="btn btn-danger btn-sm"
+        onClick={() => console.log(`Soulbound ${row.id}`)}
+      >
+        Send Soulbound
+      </button>
+    ),
+  },
 ];

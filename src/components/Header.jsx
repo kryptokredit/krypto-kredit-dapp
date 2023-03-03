@@ -1,34 +1,29 @@
 import { Navbar, Nav, Dropdown } from "react-bootstrap";
-import { useDynamicContext } from "@dynamic-labs/sdk-react";
 import React from "react";
-
+import MetaMaskSDK from "@metamask/sdk";
 function Header() {
-  const {
-    user,
-    isAuthenticated,
-    primaryWallet,
-    handleLogOut,
-    connectedWallets,
-    setShowAuthFlow,
-    showAuthFlow,
-    walletConnector,
-  } = useDynamicContext();
-  const [balance, setBalance] = React.useState(null);
-  const [addressWallet, setAddressWallet] = React.useState("");
+  const [sdk, setSdk] = React.useState(null);
 
-  async function handleWallet() {
-    setAddressWallet(await walletConnector.fetchPublicAddress());
-  }
+  const [account, setAccount] = React.useState(null);
 
-  React.useEffect(() => {
-    if (user && walletConnector) {
-      const provider = walletConnector.getWeb3Provider();
-      handleWallet();
-      provider.getBalance(user.walletPublicKey).then((balance) => {
-        setBalance(balance.toString());
-      });
+  async function connect() {
+    if (!sdk) {
+      const options = {
+        // add any desired options here
+      };
+      const newSdk = new MetaMaskSDK(options);
+      setSdk(newSdk);
     }
-  }, [user, walletConnector]);
+
+    try {
+      const accounts = await sdk.request({ method: "eth_requestAccounts" });
+      console.log("Connected with MetaMask!", accounts);
+      setAccount(accounts[0]);
+      // do any necessary state updates or API calls here
+    } catch (error) {
+      console.error("MetaMask connection error:", error);
+    }
+  }
 
   return (
     <Navbar bg="light" expand="lg">
@@ -43,7 +38,25 @@ function Header() {
       <Navbar.Collapse id="basic-navbar-nav " className="justify-content-end">
         <Nav className="mr-auto">
           <Dropdown as={Nav.Item}>
-            <Dropdown.Toggle as={Nav.Link} style={{ marginRight: "15px" }}>
+            <Dropdown.Toggle
+              as={Nav.Link}
+              style={{
+                marginRight: "15px",
+                color: "#555",
+                transition: "all 0.3s ease-in-out",
+              }}
+              activeStyle={{
+                backgroundColor: "#eee",
+                color: "#12E26C",
+                fontWeight: "bold",
+              }}
+              onMouseEnter={(e) => {
+                e.target.style.color = "#12E26C";
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.color = "#555";
+              }}
+            >
               Invoicer
             </Dropdown.Toggle>
             <Dropdown.Menu>
@@ -54,7 +67,25 @@ function Header() {
             </Dropdown.Menu>
           </Dropdown>
           <Dropdown as={Nav.Item}>
-            <Dropdown.Toggle as={Nav.Link} style={{ marginRight: "15px" }}>
+            <Dropdown.Toggle
+              as={Nav.Link}
+              style={{
+                marginRight: "15px",
+                color: "#555",
+                fontWeight: "bold",
+                transition: "all 0.3s ease-in-out",
+              }}
+              activeStyle={{
+                backgroundColor: "#eee",
+                color: "#12E26C",
+              }}
+              onMouseEnter={(e) => {
+                e.target.style.color = "#12E26C";
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.color = "#555";
+              }}
+            >
               Payer
             </Dropdown.Toggle>
             <Dropdown.Menu>
@@ -79,16 +110,10 @@ function Header() {
                 marginRight: "15px",
               }}
               onClick={() => {
-                console.log("isAuthenticated", isAuthenticated);
-                console.log("addressWallet", addressWallet);
-                setShowAuthFlow(true);
+                connect();
               }}
             >
-              {isAuthenticated
-                ? addressWallet.slice(0, 6) +
-                  "..." +
-                  addressWallet.slice(39, 42)
-                : "Connect"}
+              {account ? `${account}` : "Connect"}
             </button>
           </Nav.Item>
         </Nav>
