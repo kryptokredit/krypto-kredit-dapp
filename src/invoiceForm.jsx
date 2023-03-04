@@ -3,7 +3,6 @@ import React, { useState } from "react";
 function InvoiceForm() {
   const [optionsVisible, setOptionsVisible] = useState(false);
   const [selectedOption, setSelectedOption] = useState("ETH");
-  const [name, setName] = useState("");
   const [dueDate, setDueDate] = useState(new Date().toISOString().slice(0, 10));
   const [payerWalletAddress, setPayerWalletAddress] = useState("");
   const [description, setDescription] = useState("");

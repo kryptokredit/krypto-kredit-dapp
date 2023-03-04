@@ -8,27 +8,6 @@ import {
   unpaidColumns,
 } from "./helpers/payercolumns";
 
-// const conditionalRowStyles = [
-//   {
-//     when: row => row.status === "unpaid",
-//     style: row => ({
-//       backgroundColor: "rgba(255, 255, 0, 0.5)",
-//     }),
-//   },
-//   {
-//     when: row => row.status === "paid",
-//     style: row => ({
-//       backgroundColor: "rgba(0, 255, 0, 0.5)",
-//     }),
-//   },
-//   {
-//     when: row => row.status === "outstanding",
-//     style: row => ({
-//       backgroundColor: "rgba(255, 0, 0, 0.5)",
-//     }),
-//   },
-// ];
-
 const allData = [
   {
     id: 1,
@@ -82,15 +61,10 @@ const allData = [
 ];
 
 function PayerInvoiceList() {
-  // const { loading, error, data } = useQuery(INVOICE_CREATEDS_QUERY);
-
-  // if (loading) return <p>Loading...</p>;
-  // if (error) return <p>Error :(</p>;
   const [data, setData] = useState(allData);
   const [selectedStatus, setSelectedStatus] = useState("all");
-  // const [showCheckboxes, setShowCheckboxes] = useState(false);
+
   const [payercolumns, setColumns] = useState(allColumns);
-  const [isHovering, setIsHovering] = useState(false);
 
   const filterData = (status) => {
     if (status === "all") {
