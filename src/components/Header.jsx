@@ -72,7 +72,7 @@ function Header() {
               style={{
                 marginRight: "15px",
                 color: "#555",
-                fontWeight: "bold",
+
                 transition: "all 0.3s ease-in-out",
               }}
               activeStyle={{
