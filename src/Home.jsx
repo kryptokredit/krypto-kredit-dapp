@@ -32,6 +32,10 @@ function Home() {
           <button
             type="button"
             className="btn btn-outline-secondary btn-lg px-4"
+            onClick={() =>
+              (window.location.href =
+                "https://github.com/kryptokredit/krypto-kredit-dapp")
+            }
           >
             Learn More
           </button>

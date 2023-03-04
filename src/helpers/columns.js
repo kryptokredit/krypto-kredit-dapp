@@ -35,6 +35,19 @@ export const allColumns = [
     ),
   },
   {
+    name: <span style={{ fontWeight: "bold" }}>Mint</span>,
+    selector: "view",
+    cell: (row) => (
+      <button
+        className="btn  btn-sm"
+        onClick={() => console.log(`Sell ${row.id}`)}
+        style={{ width: "80px", height: "auto", backgroundColor: "#12E26C" }}
+      >
+        Mint
+      </button>
+    ),
+  },
+  {
     name: <span style={{ fontWeight: "bold" }}>View invoice</span>,
     selector: "view",
     cell: (row) => (
