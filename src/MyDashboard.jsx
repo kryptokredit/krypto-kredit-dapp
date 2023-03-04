@@ -78,34 +78,59 @@ function MyDashboard() {
               </li>
             </ul>
           </div>
-          <div className="row row-cols-1 row-cols-md-3 g-1" style={{ justifyContent: "center", marginTop: "20px" }}>
-            <div className="col">
-              <div className="card text-bg-light mb-3" style={{ maxWidth: "18rem" }}>
-                <div className="card-header">Staus: Paid </div>
-                <div className="card-body">
-                  <h5 className="card-title">Dent Services.Co</h5>
-                  <p className="card-text">
-                  Comprehensive check up with teeth cleaning
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="col">
-              <div className="card text-bg-light mb-3" style={{ maxWidth: "18rem" }}>
-                <div className="card-header">Header</div>
-                <div className="card-body">
-                  <h5 className="card-title">Light card title</h5>
-                  <p className="card-text">
-                 Comprehensive check up with teeth cleaning
-                  </p>
-                </div>
-                
-              </div>
-            </div>
-          </div>
-        </div>
+      
+          <div className="card-deck d-flex justify-content-center gap-3"style={{  marginTop: "20px" }}>
+
+    <div className="card border-primary mb-3" style={{ maxWidth: "18rem" }}>
+      <div className="card-header">Status: Renegotiated</div>
+      <div className="card-body text-primary">
+        <h5 className="card-title">Beamer Auto</h5>
+        <p className="card-text">
+        Engine Oil Change and Brake Pad Replacement
+        </p>
       </div>
-    </>
+    </div>
+
+
+  
+    <div className="card border-secondary mb-3" style={{ maxWidth: "18rem" }}>
+      <div className="card-header">Status: Paid</div>
+      <div className="card-body text-secondary">
+        <h5 className="card-title">Firm Inc.</h5>
+        <p className="card-text">
+        Legal Consultation and Drafting Legal Documents
+        </p>
+      </div>
+    </div>
+  
+
+    <div className="card border-dangers mb-3" style={{ maxWidth: "18rem" }}>
+      <div className="card-header">Status: Unpaid</div>
+      <div className="card-body text-danger">
+        <h5 className="card-title">Denver Medical </h5>
+        <p className="card-text">
+        Medications and Medical Supplies:
+        </p>
+      </div>
+    </div>
+
+ 
+    <div className="card border-danger mb-3" style={{ maxWidth: "18rem" }}>
+      <div className="card-header">Status: Unpaid</div>
+      <div className="card-body text-danger">
+        <h5 className="card-title">Dental Services.Coe</h5>
+        <p className="card-text">
+        Comprehensive Dental Checkup and teeth Cleaning
+        </p>
+      </div>
+    </div>
+
+</div>
+</div>
+</div>
+
+
+ </>
   );
 }
 
