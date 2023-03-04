@@ -1,7 +1,9 @@
-const { ApolloClient, InMemoryCache, gql } = require('@apollo/client');
+const { ApolloClient, InMemoryCache, gql } = require("@apollo/client");
+import React from "react";
+import * as ReactBootstrap from "react-bootstrap";
 
 const client = new ApolloClient({
-  uri: 'https://api.studio.thegraph.com/query/<ID>/<SUBGRAPH_NAME>',
+  uri: "https://api.studio.thegraph.com/query/<ID>/<SUBGRAPH_NAME>",
   cache: new InMemoryCache(),
 });
 
@@ -28,7 +30,10 @@ async function fetchInvoicesByInvoicer(invoicer) {
   });
 
   if (loading) {
-    console.log('Loading...');
+    console.log("Loading...");
+    <ReactBootstrap.Spinner animation="border" role="status">
+      <span className="visually-hidden">Loading...</span>
+    </ReactBootstrap.Spinner>;
   }
 
   if (error) {
@@ -40,6 +45,6 @@ async function fetchInvoicesByInvoicer(invoicer) {
 }
 
 // Example usage
-fetchInvoicesByInvoicer('0x1234567890123456789012345678901234567890')
-  .then(invoices => console.log(invoices))
-  .catch(error => console.error(error));
+fetchInvoicesByInvoicer("0x1234567890123456789012345678901234567890")
+  .then((invoices) => console.log(invoices))
+  .catch((error) => console.error(error));

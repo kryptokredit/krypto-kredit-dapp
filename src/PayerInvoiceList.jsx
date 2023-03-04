@@ -6,13 +6,13 @@ import {
   outstandingColumns,
   paidColumns,
   unpaidColumns,
-} from "./helpers/columns";
+} from "./helpers/payercolumns";
 
 // const conditionalRowStyles = [
 //   {
 //     when: row => row.status === "unpaid",
 //     style: row => ({
-//       backgroundColor: "yellow",
+//       backgroundColor: "rgba(255, 255, 0, 0.5)",
 //     }),
 //   },
 //   {
@@ -28,12 +28,6 @@ import {
 //     }),
 //   },
 // ];
-
-const customTheme = {
-  rows: {
-    fontWeight: "bold",
-  },
-};
 
 const allData = [
   {
@@ -88,11 +82,15 @@ const allData = [
 ];
 
 function PayerInvoiceList() {
+  // const { loading, error, data } = useQuery(INVOICE_CREATEDS_QUERY);
+
+  // if (loading) return <p>Loading...</p>;
+  // if (error) return <p>Error :(</p>;
   const [data, setData] = useState(allData);
   const [selectedStatus, setSelectedStatus] = useState("all");
   // const [showCheckboxes, setShowCheckboxes] = useState(false);
-
-  const [columns, setColumns] = useState(allColumns);
+  const [payercolumns, setColumns] = useState(allColumns);
+  const [isHovering, setIsHovering] = useState(false);
 
   const filterData = (status) => {
     if (status === "all") {
@@ -117,9 +115,7 @@ function PayerInvoiceList() {
   return (
     <div>
       {" "}
-      <h1 style={{ textAlign: "center", color: "black" }}>
-        My Invoices(Payer)
-      </h1>
+      <h1 style={{ textAlign: "center", color: "black" }}>Payer Invoice</h1>
       <div
         style={{
           margin: "10vh 5% 5% 5%",
@@ -137,15 +133,15 @@ function PayerInvoiceList() {
         >
           <button
             onClick={() => filterData("paid")}
-            className={`btn btn-success me-2 ${
-              selectedStatus === "paid" ? "active" : ""
-            }`}
+            style={{ backgroundColor: "#4E4FE9", color: "white" }}
+            className={`btn  me-2 ${selectedStatus === "paid" ? "active" : ""}`}
           >
             Paid
           </button>
           <button
             onClick={() => filterData("unpaid")}
-            className={`btn btn-success me-2 ${
+            style={{ backgroundColor: "#4E4FE9", color: "white" }}
+            className={`btn  me-2 ${
               selectedStatus === "unpaid" ? "active" : ""
             }`}
           >
@@ -153,7 +149,8 @@ function PayerInvoiceList() {
           </button>
           <button
             onClick={() => filterData("outstanding")}
-            className={`btn btn-success me-2 ${
+            style={{ backgroundColor: "#4E4FE9", color: "white" }}
+            className={`btn me-2 ${
               selectedStatus === "outstanding" ? "active" : ""
             }`}
           >
@@ -161,6 +158,10 @@ function PayerInvoiceList() {
           </button>
           <button
             onClick={() => filterData("all")}
+            style={{
+              backgroundColor: "#4E4FE9",
+              color: "white",
+            }}
             className={`btn btn-success ${
               selectedStatus === "all" ? "active" : ""
             }`}
@@ -168,32 +169,9 @@ function PayerInvoiceList() {
             All
           </button>
         </div>
-        <div style={{ border: "3px solid #12E26C", borderRadius: "20px" }}>
-          <DataTable columns={columns} customTheme={customTheme} data={data} />
+        <div style={{ border: "3px solid #000080", borderRadius: "20px" }}>
+          <DataTable columns={payercolumns} data={data} />
         </div>
-
-        <Link to="/invoiceForm" style={{ textDecoration: "none" }}>
-          <button
-            type="button"
-            className="btn btn-success"
-            style={{
-              position: "absolute",
-              top: "25px",
-              right: "20px",
-              color: "white",
-              fontSize: "15px",
-              display: "flex",
-              borderRadius: "10px",
-              justifyContent: "center",
-              alignItems: "center",
-              boxShadow: "2px 2px 5px rgba(0,0,0,0.2)",
-              outline: "none",
-              cursor: "pointer",
-            }}
-          >
-            + Create an Invoice
-          </button>
-        </Link>
       </div>
     </div>
   );
