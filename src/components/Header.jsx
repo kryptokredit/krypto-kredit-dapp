@@ -1,8 +1,10 @@
 import { Navbar, Nav, Dropdown } from "react-bootstrap";
+import { useState } from "react";
 import React from "react";
 import MetaMaskSDK from "@metamask/sdk";
 function Header() {
   const [sdk, setSdk] = React.useState(null);
+  const [activeTab, setActiveTab] = useState("");
 
   const [account, setAccount] = React.useState(null);
 
@@ -35,14 +37,14 @@ function Header() {
         />
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
-      <Navbar.Collapse id="basic-navbar-nav " className="justify-content-end">
+      <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
         <Nav className="mr-auto">
           <Dropdown as={Nav.Item}>
             <Dropdown.Toggle
               as={Nav.Link}
               style={{
                 marginRight: "15px",
-                color: "#555",
+                color: activeTab === "invoicer" ? "#12E26C" : "#555",
                 transition: "all 0.3s ease-in-out",
               }}
               activeStyle={{
@@ -54,13 +56,24 @@ function Header() {
                 e.target.style.color = "#12E26C";
               }}
               onMouseLeave={(e) => {
-                e.target.style.color = "#555";
+                e.target.style.color =
+                  activeTab === "invoicer" ? "#12E26C" : "#555";
               }}
             >
               Invoicer
             </Dropdown.Toggle>
             <Dropdown.Menu>
-              <Dropdown.Item href="/InvoiceList">My Invoices</Dropdown.Item>
+              <Dropdown.Item
+                href="/InvoiceList"
+                style={{ color: activeTab === "invoicer" ? "#12E26C" : "#555" }}
+                onClick={(e) => {
+                  setActiveTab("invoicer");
+                  e.target.style.color =
+                    activeTab === "invoicer" ? "#12E26C" : "#555";
+                }}
+              >
+                My Invoices
+              </Dropdown.Item>
               <Dropdown.Item href="/InvoiceForm">
                 Create an Invoice
               </Dropdown.Item>
@@ -71,8 +84,7 @@ function Header() {
               as={Nav.Link}
               style={{
                 marginRight: "15px",
-                color: "#555",
-
+                color: activeTab === "payer" ? "#12E26C" : "#555",
                 transition: "all 0.3s ease-in-out",
               }}
               activeStyle={{
@@ -83,7 +95,13 @@ function Header() {
                 e.target.style.color = "#12E26C";
               }}
               onMouseLeave={(e) => {
-                e.target.style.color = "#555";
+                e.target.style.color =
+                  activeTab === "payer" ? "#12E26C" : "#555";
+              }}
+              onClick={(e) => {
+                setActiveTab("payer");
+                e.target.style.color =
+                  activeTab === "invoicer" ? "#12E26C" : "#555";
               }}
             >
               Payer
