@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 
+
+
+
 function MyDashboard() {
   const [activeLink, setActiveLink] = useState("Active");
 
@@ -104,7 +107,7 @@ function MyDashboard() {
     </div>
   
 
-    <div className="card border-dangers mb-3" style={{ maxWidth: "18rem" }}>
+    <div className="card border-danger mb-3" style={{ maxWidth: "18rem" }}>
       <div className="card-header">Status: Unpaid</div>
       <div className="card-body text-danger">
         <h5 className="card-title">Denver Medical </h5>
