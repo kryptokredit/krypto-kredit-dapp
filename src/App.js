@@ -6,6 +6,7 @@ import PayerInvoiceList from "./PayerInvoiceList";
 import Header from "./components/Header";
 import InvoiceForm from "./invoiceForm";
 import MyDashboard from "./MyDashboard";
+import ViewInvoice from "./ViewInvoice";
 
 
 const App = () => {
@@ -18,11 +19,13 @@ const App = () => {
           <Route exact path="/InvoiceList" element={<InvoiceList />} />
           <Route exact path="/InvoiceList" element={<InvoiceList />} />
           <Route exact path="/MyDashboard" element={<MyDashboard />} />
+          <Route exact path="/ViewInvoice" element={<ViewInvoice />} />
           <Route
             exact
             path="/PayerInvoiceList"
             element={<PayerInvoiceList />}
           />
+        
         </Routes>
 
     </div>

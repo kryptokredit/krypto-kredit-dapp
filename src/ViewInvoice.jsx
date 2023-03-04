@@ -48,20 +48,21 @@ function ViewInvoice() {
             <h6 className="card-title">Renegotiate: </h6>
             {editable ? (
               <div>
-                <input
-                  type="text"
-                  className="form-control"
-                  style={{ border: "none", textAlign: "center" }}
-                  placeholder="Enter text here"
-                  value={renegotiateText}
-                  onChange={handleInputChange}
-                />
+               <input
+  type="text"
+  className="form-control"
+  style={{ border: "none", textAlign: "center" }}
+  placeholder="New Amount, New Date, New Fee"
+  value={renegotiateText}
+  onChange={handleInputChange}
+/>
+
                 <a href="#" className="btn btn-primary mt-3" onClick={handleSendClick}>
                   Send
                 </a>
               </div>
             ) : (
-              <div onClick={handleRenegotiateClick}>{renegotiateText ? renegotiateText : "Click to add text"}</div>
+              <div onClick={handleRenegotiateClick}>{renegotiateText ? renegotiateText : "Click to Renegotiate"}</div>
             )}
           </div>
           <div className="card-footer text-muted">20 days left</div>
