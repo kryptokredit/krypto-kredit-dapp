@@ -1,14 +1,23 @@
 {
   "name": "krypto-kredit-dapp",
+  "homepage": "https://640165ff53ab860008c01d1d--friendly-selkie-2bb824.netlify.app",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@apollo/client": "^3.7.9",
+    "@dynamic-labs/sdk-react": "^0.15.0",
+    "@ethersproject/abi": "^5.7.0",
+    "@metamask/sdk": "^0.1.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "react": "^18.2.0",
+    "react-bootstrap": "^2.7.2",
+    "react-data-table-component": "^7.5.3",
     "react-dom": "^18.2.0",
+    "react-router-dom": "^6.8.2",
     "react-scripts": "5.0.1",
+    "styled-components": "^5.3.8",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
